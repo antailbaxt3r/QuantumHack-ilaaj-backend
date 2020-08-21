@@ -1,0 +1,23 @@
+{
+	"name": "ilaaj",
+	"version": "1.0.0",
+	"description": "",
+	"main": "truffle-config.js",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "antailbaxt3r",
+	"dependencies": {
+		"@truffle/hdwallet-provider": "^1.0.42",
+		"chai": "^4.2.0",
+		"chai-as-promised": "^7.1.1",
+		"dotenv": "^8.2.0",
+		"ethereumjs-tx": "^2.1.2",
+		"truffle": "^5.0.5",
+		"web3": "^1.2.11"
+	},
+	"license": "ISC"
+}
