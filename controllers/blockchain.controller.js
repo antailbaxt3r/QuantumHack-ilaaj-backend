@@ -71,7 +71,59 @@ async function addDoc(user, doctor, type, link) {
 }
 
 async function getDoc(id) {
-	return await documentContract.methods.getDocument(id).call({gas: web3.utils.toHex(web3.utils.toWei("20", "gwei"))});
+	const doc =  await documentContract.methods.docList(id).call();
+	return {
+		id: doc.id,
+		user: doc.user,
+		doctor: doc.doctor,
+		docType: doc.docType,
+		link: doc.link
+	}
+}
+
+async function getUserDocs(user){
+	var count = 0
+	var docs = []
+	var docCount = await getDocCount()
+	for(var i = 1; i <= docCount; i++){
+		const doc = await getDoc(i)
+		// console.log("DOC" + i, doc)
+		if(doc.user == user && doc.docType == "R"){
+			docs[count] = doc
+			count++	
+		}
+	}
+	return docs
+}
+
+async function getUserPrescriptions(user){
+	var count = 0
+	var docs = []
+	var docCount = await getDocCount()
+	for(var i = 1; i <= docCount; i++){
+		const doc = await getDoc(i)
+		// console.log("DOC" + i, doc)
+		if(doc.user == user && doc.docType == "P"){
+			docs[count] = doc
+			count++	
+		}
+	}
+	return docs
+}
+
+async function getDoctorPrescriptions(user){
+	var count = 0
+	var docs = []
+	var docCount = await getDocCount()
+	for(var i = 1; i <= docCount; i++){
+		const doc = await getDoc(i)
+		// console.log("DOC" + i, doc)
+		if(doc.doctor == user && doc.docType == "P"){
+			docs[count] = doc
+			count++	
+		}
+	}
+	return docs
 }
 
 async function run() {
@@ -79,7 +131,8 @@ async function run() {
 	console.log("Network id: ", await getNetworkId());
 	console.log("Count is: ", await getDocCount());
 	// await addDoc("1", "2", "P", "this.link.com");
-	console.log("1: ", await documentContract.methods.docList(1).call())
+	// console.log("1: ", await getDoc(1))
+	console.log("userDocs: ", await getUserDocs(1))
 }
 
 run();
