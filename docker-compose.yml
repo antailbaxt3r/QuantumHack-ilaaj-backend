@@ -1,0 +1,23 @@
+version: '3.7'
+services: 
+    api: 
+        ports:
+            - "4193:4193"
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        image: ilaaj
+        container_name: ilaaj_api
+        volumes:
+            - ./:/usr/src/ilaaj
+        environment:
+            DATABASE_URL: postgres://postgres:eatsleepcode@postgres:5432/db
+    postgres:
+        image: postgres
+        ports:
+            - "5432:5432"
+        container_name: postgresContainer
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: eatsleepcode
+            POSTGRES_DB: db

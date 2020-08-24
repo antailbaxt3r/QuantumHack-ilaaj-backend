@@ -126,13 +126,13 @@ async function getDoctorPrescriptions(user){
 	return docs
 }
 
-async function run() {
-	await setUpContract();
-	console.log("Network id: ", await getNetworkId());
-	console.log("Count is: ", await getDocCount());
-	// await addDoc("1", "2", "P", "this.link.com");
-	// console.log("1: ", await getDoc(1))
-	console.log("userDocs: ", await getUserDocs(1))
-}
+// async function run() {
+// 	await setUpContract();
+// 	console.log("Network id: ", await getNetworkId());
+// 	console.log("Count is: ", await getDocCount());
+// 	// await addDoc("1", "2", "P", "this.link.com");
+// 	// console.log("1: ", await getDoc(1))
+// 	console.log("userDocs: ", await getUserDocs(1))
+// }
 
 run();

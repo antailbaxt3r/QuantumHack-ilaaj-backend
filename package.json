@@ -5,18 +5,29 @@
 	"main": "truffle-config.js",
 	"directories": {
 		"test": "test"
-	},
+	},	
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"bcdev": "node ./controllers/blockchain.controller.js"
+		"bcdev": "node ./controllers/blockchain.controller.js",
+		"start": "node ./bin/www",
+		"dev": "nodemon ./bin/www"
 	},
 	"author": "antailbaxt3r",
 	"dependencies": {
 		"@truffle/hdwallet-provider": "^1.0.42",
+		"body-parser": "^1.19.0",
 		"chai": "^4.2.0",
 		"chai-as-promised": "^7.1.1",
 		"dotenv": "^8.2.0",
 		"ethereumjs-tx": "^2.1.2",
+		"express": "^4.17.1",
+		"googleapis": "^52.1.0",
+		"http": "0.0.1-security",
+		"ioredis": "^4.17.3",
+		"path": "^0.12.7",
+		"pg": "^8.2.1",
+		"readline": "^1.3.0",
+		"sequelize": "^6.3.4",
 		"truffle": "^5.0.5",
 		"web3": "^1.2.11"
 	},
