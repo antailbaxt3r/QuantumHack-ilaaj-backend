@@ -39,7 +39,8 @@ module.exports.signIn = async (req, res) => {
         // Create a new user
         var create_object = {
           email: userEmail,
-          name: userName,
+		  name: userName,
+		  doctor: req.body.doctor
         };
 
         db.models.users
@@ -50,7 +51,7 @@ module.exports.signIn = async (req, res) => {
             var auth_data = {
               email: login_data.email,
               id: login_data.id,
-              created_at: login_data.created_at,
+			  created_at: login_data.created_at
             };
             // Create and assign an auth-token
             const TOKEN_SECRET = config.keys.jwtKey;
@@ -75,7 +76,8 @@ module.exports.signIn = async (req, res) => {
         var auth_data = {
           email: user.email,
           id: user.id,
-          created_at: user.created_at,
+		  created_at: user.created_at,
+		  doctor: user.doctor
         };
         // Create and assign an auth-token
         const TOKEN_SECRET = config.keys.jwtKey;

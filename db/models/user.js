@@ -26,7 +26,11 @@ module.exports.User = sequelize.define(
         new_user: {
 			type: DataTypes.BOOLEAN,
 			defaultValue: true
-        }
+		},
+		doctor: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: true
+		}
 	},
 	{
 		underscored: true,
