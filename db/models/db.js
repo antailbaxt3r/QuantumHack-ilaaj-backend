@@ -13,4 +13,8 @@ db.models = require("./models");
 
 //relations
 
+//Users-Documents
+db.models.users.hasMany(db.models.documents, { as: 'documents' })
+db.models.documents.belongsTo(db.models.users, { foreignKey: 'userId', as: 'user' })
+
 module.exports = db;

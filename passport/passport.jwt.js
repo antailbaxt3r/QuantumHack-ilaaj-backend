@@ -9,4 +9,5 @@ passport.use(new JWTStrategy({
     secretOrKey: config.keys.jwtKey
 },(jwtPayload, done) => {
     return done(null, jwtPayload)
+    
 }))
