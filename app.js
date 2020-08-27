@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var cors = require('cors')
 const passport = require('passport')
+const blockchain = require('./controllers/blockchain.controller')
 
 var db = require('./db/db')
 require('./passport/passport.jwt')
@@ -23,5 +24,8 @@ app.get("/", (req, res) => {
 app.use("/api/v1", router)
 
 db.connectDb();
+const blockchainSetup = async () => await blockchain.setUpContract()
+blockchainSetup();
 
 module.exports = app
+  

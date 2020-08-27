@@ -34,6 +34,8 @@ async function setUpContract() {
 				networkData.address
 			);
 			console.log("Set up successfully!");
+		}else{
+			console.log("Something went wrong! Could not set up blockchain contract!");
 		}
 	});
 }
@@ -135,4 +137,14 @@ async function getDoctorPrescriptions(user){
 // 	console.log("userDocs: ", await getUserDocs(1))
 // }
 
-run();
+// run();
+
+module.exports = {
+	getNetworkId,
+	setUpContract,
+	getDocCount,
+	addDoc,
+	getUserDocs,
+	getUserPrescriptions,
+	getDoctorPrescriptions
+}

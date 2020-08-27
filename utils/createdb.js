@@ -13,7 +13,12 @@ async function public_force(){
         record_id: 1,
         user_id: 1
     })
-    
+
+    appointment = await db.models.appointments.create({
+        user_id: 2,
+        doctor_id: 1,
+        dateTime: new Date()
+    })
 }
 
 async function main(){
