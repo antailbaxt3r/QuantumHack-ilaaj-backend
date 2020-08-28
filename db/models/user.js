@@ -24,8 +24,7 @@ module.exports.User = sequelize.define(
             type: DataTypes.STRING
         },
         new_user: {
-			type: DataTypes.BOOLEAN,
-			defaultValue: true
+			type: DataTypes.BOOLEAN
 		},
 		doctor: {
 			type: DataTypes.BOOLEAN,
@@ -35,10 +34,10 @@ module.exports.User = sequelize.define(
 			type: DataTypes.BOOLEAN
 		},
 		rating: {
-			type: Datatypes.BIGINT
+			type: DataTypes.BIGINT
 		},
 		price: {
-			type: Datatypes.BIGINT
+			type: DataTypes.BIGINT
 		}
 	},
 	{

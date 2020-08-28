@@ -52,6 +52,7 @@ module.exports.signIn = async (req, res) => {
                             email: login_data.email,
                             id: login_data.id,
                             created_at: login_data.created_at,
+                            new_user: true
                         };
                         // Create and assign an auth-token
                         const TOKEN_SECRET = config.keys.jwtKey;
