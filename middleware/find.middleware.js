@@ -28,10 +28,10 @@ module.exports.appointment = async (req, res, next) => {
 module.exports.document = async (req, res, next) => {
     try {
         const id = req.body.id;
-        const appointment = await db.models.documents.findOne({
+        const document = await db.models.documents.findOne({
             where: { id: id },
         });
-        if (appointment) {
+        if (document) {
             req.document = document;
             return next();
         } else {

@@ -16,7 +16,7 @@ services:
         image: postgres
         ports:
             - "5432:5432"
-        container_name: postgresContainer
+        container_name: postgres_Container
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: eatsleepcode
