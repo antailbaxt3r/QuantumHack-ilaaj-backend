@@ -5,11 +5,13 @@ const blockchain = require("./blockchain.controller")
 module.exports.getDoc = async (req, res) => {
 	try {
         const document = req.document;
-        await blockchain.getDoc(document.record_id).then((record) => document.details = record);
-		res.status(200).json({
-			success: true,
-			document: document,
-		});
+		await blockchain.getDoc(document.record_id).then((record) => {
+			document.details = JSON.parse(record.toString())
+			res.status(200).json({
+				success: true,	
+				document: document,
+			});
+		})
 	} catch (e) {
 		console.log(e);
 		res.status(500).json({
@@ -27,11 +29,12 @@ module.exports.getUserDocuments = async (req, res) => {
 			where: { userId: userId }
 		})
 		docs.forEach(async (doc) => {
-			doc.details = await blockchain.getDoc(doc.record_id)
+			const record = await blockchain.getDoc(doc.record_id)
+			doc.details = JSON.parse(record.toString())
 		})
 		res.status(200).json({
 			success: true,
-			documents: documents,
+			documents: docs,
 		});
 	} catch (e) {
 		console.log(e);
@@ -46,7 +49,9 @@ module.exports.getUserDocuments = async (req, res) => {
 module.exports.getDoctorPrescriptions = async (req, res) => {
 	try{
 		const doctorId = req.body.doctorId
-		const docs = await blockchain.getDoctorPrescriptions(doctorId)
+		const d = await blockchain.getDoctorPrescriptions(doctorId)
+		console.log(d)
+		const docs = JSON.parse(d.toString())
 		const result = []
 		docs.forEach(async (doc) => {
 			const pres = await db.models.documents.findOne({ where: { record_id: doc.id } })

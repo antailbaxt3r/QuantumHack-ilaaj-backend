@@ -3,9 +3,10 @@ var db = require("../db/models/db");
 
 module.exports.appointment = async (req, res, next) => {
     try {
-        const id = req.body.id;
+        const id = req.header.id;
         const appointment = await db.models.appointments.findOne({
             where: { id: id },
+            raw: true
         });
         if (appointment) {
             req.appointment = appointment;
@@ -27,9 +28,10 @@ module.exports.appointment = async (req, res, next) => {
 
 module.exports.document = async (req, res, next) => {
     try {
-        const id = req.body.id;
+        const id = req.header.id;
         const document = await db.models.documents.findOne({
             where: { id: id },
+            raw: true
         });
         if (document) {
             req.document = document;

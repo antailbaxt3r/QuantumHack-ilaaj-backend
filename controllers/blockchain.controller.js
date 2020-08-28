@@ -74,13 +74,13 @@ async function addDoc(user, doctor, type, link) {
 
 async function getDoc(id) {
 	const doc =  await documentContract.methods.docList(id).call();
-	return {
+	return JSON.stringify({
 		id: doc.id,
 		user: doc.user,
 		doctor: doc.doctor,
 		docType: doc.docType,
 		link: doc.link
-	}
+	})
 }
 
 async function getUserDocs(user){
@@ -125,19 +125,19 @@ async function getDoctorPrescriptions(user){
 			count++	
 		}
 	}
-	return docs
+	return JSON.stringify(docs)
 }
 
-async function run() {
-	// await setUpContract();
-	// console.log("Network id: ", await getNetworkId());
-	// console.log("Count is: ", await getDocCount());
-	// await addDoc("1", "2", "P", "this.link.com");
-	console.log("1: ", await getDoc(1))
-	// console.log("userDocs: ", await getUserDocs(1))
-}
+// async function run() {
+// 	await setUpContract();
+// 	console.log("Network id: ", await getNetworkId());
+// 	console.log("Count is: ", await getDocCount());
+// 	await addDoc("1", "2", "P", "this.link.com");
+// 	console.log("1: ", await getDoc(1))
+// 	console.log("userDocs: ", await getUserDocs(1))
+// }
 
-run();
+// run();
 
 module.exports = {
 	getNetworkId,

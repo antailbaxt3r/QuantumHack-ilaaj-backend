@@ -156,7 +156,7 @@ module.exports.updateUser = async (req, res) => {
 
 module.exports.filterCollege = async (req, res) => {
     try {
-        const collegeId = req.body.collegeId;
+        const collegeId = req.header.collegeId;
         const users = await db.models.users.findAll({
             where: {
                 collegeId: collegeId
