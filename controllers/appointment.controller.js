@@ -132,7 +132,7 @@ module.exports.updateAppointment = async (req, res) => {
 
 module.exports.filterUser = async (req, res) => {
     try {
-        const userId = req.headers.userId;
+        const userId = req.headers["userId"];
         const appointments = await db.models.appointments.findAll({
             where: {
                 user_id: userId,
