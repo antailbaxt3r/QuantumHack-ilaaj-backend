@@ -30,6 +30,15 @@ module.exports.User = sequelize.define(
 		doctor: {
 			type: DataTypes.BOOLEAN,
 			defaultValue: true
+		},
+		upi_id: {
+			type: DataTypes.BOOLEAN
+		},
+		rating: {
+			type: Datatypes.BIGINT
+		},
+		price: {
+			type: Datatypes.BIGINT
 		}
 	},
 	{

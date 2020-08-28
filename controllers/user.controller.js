@@ -175,3 +175,45 @@ module.exports.filterCollege = async (req, res) => {
         })
     }
 }
+
+module.exports.doctorData = async (req, res) => {
+	try {
+        const users = await db.models.users.findAll({
+            where: {
+                doctor: true
+            }
+        })
+        res.status(200).json({
+            success: true,
+            doctors: users
+        })
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({
+            success: false,
+            message: "Internal server error",
+            details: e.message
+        })
+    }
+}
+
+module.exports.userData = async (req, res) => {
+	try {
+        const users = await db.models.users.findOne({
+            where: {
+                id: req.headers.id
+            }
+        })
+        res.status(200).json({
+            success: true,
+            user: user
+        })
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({
+            success: false,
+            message: "Internal server error",
+            details: e.message
+        })
+    }
+}
